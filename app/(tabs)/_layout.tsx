@@ -40,6 +40,12 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
+      <Tabs.Screen name="manage-rooms" options={{ title: 'Rooms' }} />
+      <Tabs.Screen name="history" options={{ title: 'History' }} />
+      <Tabs.Screen name="calculator" options={{ title: 'Calculator' }} />
+      <Tabs.Screen name="tc2" options={{ title: 'Test Edit' }} />
+      <Tabs.Screen name="analytics" options={{ title: 'Test Analytics' }} />
+      
     </Tabs>
   );
 }
