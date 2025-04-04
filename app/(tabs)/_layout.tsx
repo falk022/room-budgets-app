@@ -7,6 +7,11 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { BsFileBarGraph } from "react-icons/bs";
+import Entypo from '@expo/vector-icons/Entypo';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -40,11 +45,10 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
-      <Tabs.Screen name="manage-rooms" options={{ title: 'Rooms' }} />
-      <Tabs.Screen name="history" options={{ title: 'History' }} />
-      <Tabs.Screen name="calculator" options={{ title: 'Calculator' }} />
-      <Tabs.Screen name="tc2" options={{ title: 'Test Edit' }} />
-      <Tabs.Screen name="analytics" options={{ title: 'Test Analytics' }} />
+      <Tabs.Screen name="manage-rooms" options={{ title: 'Rooms', tabBarIcon: ({ color }) => <FontAwesome name="bed" size={24} color={color} />, }} />
+      <Tabs.Screen name="history" options={{ title: 'History', tabBarIcon: ({ color }) => <FontAwesome name="history" size={24} color={color} />, }} />
+      <Tabs.Screen name="calculator" options={{ title: 'Calculator', tabBarIcon: ({ color }) => <FontAwesome5 name="calculator" size={24} color={color} />, }} />
+      <Tabs.Screen name="analytics" options={{ title: 'Analytics', tabBarIcon: ({ color }) => <Entypo name="bar-graph" size={24} color={color} />, }} />
       
     </Tabs>
   );
