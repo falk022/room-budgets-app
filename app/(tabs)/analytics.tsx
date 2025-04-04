@@ -38,7 +38,7 @@ export default function AnalyticsScreen() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, padding: 20 }} contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView style={{ flex: 1, padding: 40 }} contentContainerStyle={{ flexGrow: 1 }}>
   <View>
     <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginBottom: 20 }}>
       Monthly Budget Analytics
@@ -53,7 +53,7 @@ export default function AnalyticsScreen() {
               datasets: [{ data: monthlyData.map((data) => data.total) }],
             }}
             width={monthlyData.length * 50} // Dynamic width for better spacing
-            height={monthlyData.length * 50} // Dynamic height for better spacing
+            height={500} // fixed height
             yAxisLabel="MVR "
             fromZero
             showValuesOnTopOfBars

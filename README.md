@@ -4,17 +4,29 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Get started
 
-1. Install dependencies
+Install dependencies
 
+   FIRST TYPE
    ```bash
-   npm install
+   npx expo 
+
+   ```
+   AND IT WILL PROMPT TO INSTALL CORRECT EXPO VERSION
+
+   THEN AFTER THAT RUN 
+   ```bash
+   npm i
+
    ```
 
-2. Start the app
-
+   LASTLY TYPE THIS AGAIN
    ```bash
-    npx expo start
+   npx expo
+
    ```
+   AND THE PROJECT SHOULD START NORMALLY
+
+   I Tried to install freshly on a different computer with npm install first after cloning this and it kinda broke so i had to git clone the directory again and do as told above instead.
 
 In the output, you'll find options to open the app in a
 
@@ -25,15 +37,7 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
 ## Learn more
 
