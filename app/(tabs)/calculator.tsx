@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, FlatList, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, TextInput, Button, FlatList, TouchableOpacity, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 
 export default function RoomBudgetingScreen() {
@@ -78,11 +80,11 @@ export default function RoomBudgetingScreen() {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-    <View style={{ padding: 40 }}>
+    <ThemedView style={{ padding: 40 }}>
       {/* Date display */}
-      <Text style={{ fontSize: 18, marginBottom: 10 }}>
+      <ThemedText style={{ fontSize: 18, marginBottom: 10 }}>
         Selected Date: {moment(selectedDate).format('MMMM D, YYYY')}
-      </Text>
+      </ThemedText>
       
       {/* Button to change the date */}
       <TouchableOpacity onPress={showDatePicker} style={{ marginBottom: 20 }}>
@@ -104,22 +106,31 @@ export default function RoomBudgetingScreen() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View>
-            <Text>{item}</Text>
+            <ThemedText>{item}</ThemedText>
             <TextInput
               placeholder="Enter amount"
               keyboardType="numeric"
               value={budgets[item] || ''}
               onChangeText={(value) => handleBudgetChange(item, value)}
               onBlur={saveBudgets} // Save on input blur
-              style={{ borderBottomWidth: 1, marginBottom: 10 }}
+              style={styles.textBox}
             />
           </View>
         )}
       />
       <Button title="Calculate Total" onPress={calculateTotal} />
-      <Text>Total: MVR {total}</Text>
+      <ThemedText>Total: MVR {total}</ThemedText>
       <Button title="Clear All Values" onPress={clearAllValues} color="red" />
-    </View>
+    </ThemedView>
     </TouchableWithoutFeedback>
   );
 }
+
+const styles = StyleSheet.create({
+  textBox: {
+    borderBottomWidth: 1, 
+    marginBottom: 10, 
+    backgroundColor: 'white',
+    color: 'black'
+  },
+})

@@ -4,6 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import moment from 'moment';
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
 
 export default function CalculationsScreen() {
   const [calculations, setCalculations] = useState<{ total: number; date: string }[]>([]);
@@ -65,41 +67,49 @@ export default function CalculationsScreen() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, padding: 1 }}>
-    <View style={{ padding: 40 }}>
+    
+    <ThemedView style={{ flex: 1, padding: 40 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
         <TouchableOpacity onPress={() => changeMonth('prev')}>
-          <Feather name="chevron-left" size={24} color="black" />
+        <ThemedText>
+          <Feather name="chevron-left" size={24} />
+        </ThemedText>
         </TouchableOpacity>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, borderWidth: 1, borderRadius: 10 }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', marginHorizontal: 10 }}>{currentMonth}</Text>
+          <ThemedText style={{ fontSize: 18, fontWeight: 'bold', marginHorizontal: 10 }}>{currentMonth}</ThemedText>
         </View>
 
         <TouchableOpacity onPress={() => changeMonth('next')}>
-          <Feather name="chevron-right" size={24} color="black" />
+          <ThemedText>
+          <Feather name="chevron-right" size={24}  />
+          </ThemedText>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('calculator')}>
-          <Feather name="plus" size={24} color="black" style={{ marginLeft: 10 }} />
+        <ThemedText>
+          <Feather name="plus" size={24}  style={{ marginLeft: 10 }} />
+        </ThemedText>
         </TouchableOpacity>
       </View>
 
     {/* Total for the Month */}
-    <View style={{ marginBottom: 20, padding: 10, borderWidth: 2, borderRadius: 10, backgroundColor: '#f8f9fa' }}>
+      <View style={{ marginBottom: 20, padding: 10, borderWidth: 2, borderRadius: 10, backgroundColor: '#f8f9fa' }}>
         <Text style={{ fontSize: 12, fontWeight: 'bold' }}>
           Total This Month: MVR {filteredCalculations.reduce((sum, item) => sum + item.total, 0)}
         </Text>
       </View>
-
+      
+    {/* FlatList in a flex container */}
+    <View style={{ flex: 1 }}>
       <FlatList
         data={filteredCalculations}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 15, borderWidth: 2, padding: 10 }}>
             <View>
-              <Text>Total: MVR {item.total}</Text>
-              <Text>Date: {item.date}</Text>
+              <ThemedText>Total: MVR {item.total}</ThemedText>
+              <ThemedText>Date: {item.date}</ThemedText>
             </View>
             <View style={{ flexDirection: 'row' }}>
               {/* Edit Calculation Button */}
@@ -113,8 +123,12 @@ export default function CalculationsScreen() {
             </View>
           </View>
         )}
+        ListEmptyComponent={
+          <ThemedText style={{ textAlign: 'center', marginTop: 20 }}>No entries for this month</ThemedText>
+        }
       />
-    </View>
-    </ScrollView>
+      </View>
+    </ThemedView>
+    
   );
 }

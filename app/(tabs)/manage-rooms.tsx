@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   View, Text, TextInput, Button, FlatList, TouchableOpacity, 
-  TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, ScrollView 
+  TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet 
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useColorScheme } from "@/hooks/useColorScheme";
+
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
 
 export default function ManageRoomsScreen() {
   const [roomName, setRoomName] = useState('');
@@ -57,36 +60,46 @@ export default function ManageRoomsScreen() {
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <View style={{ padding: 40, flex: 1 }}>
-            <Text style={{ fontWeight: 'bold', padding: 5 }}>Manage Rooms:</Text>
-            <TextInput
+        
+          <ThemedView style={{ padding: 40, flex: 1 }}>
+            <ThemedText style={{ fontWeight: 'bold', padding: 5 }}>Manage Rooms:</ThemedText>
+            <TextInput style={styles.textBox}
               autoFocus={true} // Automatically pops up the keyboard
               ref={inputRef} // Attach ref to the TextInput
               value={roomName}
               onChangeText={setRoomName}
               placeholder="Enter room name"
-              style={{ borderBottomWidth: 1, marginBottom: 10 }}
             />
             <Button title="Add Room" onPress={addRoom} />
             
-            <Text style={{ padding: 5, fontWeight: 'bold' }}>Added Rooms:</Text>
+            <ThemedText style={{ padding: 5, fontWeight: 'bold' }}>Added Rooms:</ThemedText>
             <FlatList
               style={{ padding: 5 }}
               data={rooms}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({ item }) => (
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Text>{item}</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 5 }}>
+                  <ThemedText>{item}</ThemedText>
                   <TouchableOpacity onPress={() => removeRoom(item)}>
                     <Text style={{ color: 'red' }}>Remove</Text>
                   </TouchableOpacity>
                 </View>
               )}
             />
-          </View>
-        </ScrollView>
+          </ThemedView>
+        
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 }
+
+const styles = StyleSheet.create({
+
+  textBox: {
+    borderBottomWidth: 1, 
+    marginBottom: 10, 
+    backgroundColor: 'white',
+    color: 'black'
+  },
+
+});

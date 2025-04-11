@@ -4,6 +4,8 @@ import { View, Text, ScrollView, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BarChart } from 'react-native-chart-kit';
 import moment from 'moment';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function AnalyticsScreen() {
   const [monthlyData, setMonthlyData] = useState<{ month: string; total: number }[]>([]);
