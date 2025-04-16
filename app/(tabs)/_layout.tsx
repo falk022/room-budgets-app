@@ -38,13 +38,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
-      />
+      /> */}
       <Tabs.Screen name="manage-rooms" options={{ title: 'Rooms', tabBarIcon: ({ color }) => <FontAwesome name="bed" size={24} color={color} />, }} />
       <Tabs.Screen name="history" options={{ title: 'History', tabBarIcon: ({ color }) => <FontAwesome name="history" size={24} color={color} />, }} />
       <Tabs.Screen name="calculator" options={{ title: 'Calculator', tabBarIcon: ({ color }) => <FontAwesome5 name="calculator" size={24} color={color} />, }} />

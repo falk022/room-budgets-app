@@ -19,7 +19,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome To my Budget App</ThemedText>
+        <ThemedText type="title">Welcome To my Budget App For Guest Houses</ThemedText>
         
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -52,11 +52,14 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText> */}
+         <ThemedText>
+           At first the Analytics page will be empty, u can add calculations for 3 months to display the graph properly u can achieve this by using the select date function on the calculator page.
+        </ThemedText>
       </ThemedView>
 
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      {/* <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Button title="Logout" onPress={() => supabase.auth.signOut()} />
-    </View>
+    </View> */}
     </ParallaxScrollView>
     
   );
